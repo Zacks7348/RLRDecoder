@@ -40,6 +40,10 @@ stats = replay.properties.player_stats
 stats = replay.properties.get_player_stats('PLAYER NAME')
 ```
 
+## Sample JSON Output
+The JSON file that gets created from the replay.to_json() function will follow the same
+format as the replay.json file in rlrdecoder/example
+
 ----
 
 # License
