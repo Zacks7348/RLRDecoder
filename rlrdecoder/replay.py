@@ -6,7 +6,7 @@ from copy import deepcopy
 from .header_properties import HeaderProperties
 from .net_cache import NetCache
 
-@dataclass
+@dataclass()
 class Replay:
     header_size: int = None
     header_crc: int = None
@@ -14,7 +14,7 @@ class Replay:
     licensee_version: int = None
     network_version: int = None
     game_type: str = None
-    header_properties: HeaderProperties = None
+    properties: HeaderProperties = None
     body_size: int = None
     body_crc: int = None
     levels: list = None
@@ -34,7 +34,7 @@ class Replay:
         """
         
         output = deepcopy(self.__dict__)
-        output['header_properties'] = self.header_properties.data
+        output['properties'] = self.properties.data
         tmp = []
         for cache in self.net_caches:
             cache_data = deepcopy(cache.__dict__)
@@ -47,7 +47,7 @@ class Replay:
     
     @property
     def player_stats(self):
-        return self.header_properties.player_stats
+        return self.properties.player_stats
 
 def replay_from_json(path: str) -> Replay:
     """

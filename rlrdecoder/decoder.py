@@ -83,7 +83,7 @@ class ReplayDecoder:
                    f'network_version={self.replay.network_version}', 2)
         self.replay.game_type = read_str(self.bitstream)
         self.__log('Decoding header properties...', 1)
-        self.replay.header_properties = HeaderProperties(
+        self.replay.properties = HeaderProperties(
             self.decode_properties())
         self.__log('Successfully decoded header segment!', 1)
 

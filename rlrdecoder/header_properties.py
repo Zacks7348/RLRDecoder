@@ -1,4 +1,5 @@
 from bitstring import ConstBitStream
+from dataclasses import dataclass
 
 from .utils import Size, read_str
 
@@ -12,6 +13,7 @@ class Properties:
     QWORD_PROPERTY = 'QWordProperty'
     ARRAY_PROPERTY = 'ArrayProperty'
     NONE = 'None'
+
 
 class HeaderProperties:
     def __init__(self, properties: dict) -> None:

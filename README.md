@@ -34,7 +34,10 @@ from rlrdecoder import replay_from_json
 replay = replay_from_json('FILEPATH')
 
 # Get all player stats
-stats = replay.header_properties.player_stats
+stats = replay.properties.player_stats
+
+# Get stats of a specific player
+stats = replay.properties.get_player_stats('PLAYER NAME')
 ```
 
 ----
