@@ -1,5 +1,6 @@
 # RLRDecoder - Rocket League Replay Decoder
-This library is meant to be used to decode [Rocket League](https://www.rocketleague.com/) replay files
+This library is meant to be used to decode [Rocket League](https://www.rocketleague.com/) replay files.
+
 The goal is to develop a python replay decoder libraary capable of decoding all replay attributes and perform CRC checks
 
 # Installation
