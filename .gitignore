@@ -1,5 +1,3 @@
 __pycache__/
 replays/
-*.json
-*.replay
 test.py
