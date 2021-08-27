@@ -23,9 +23,12 @@ class ReplayDecoder:
         self.netstream = None
         self.header_raw = None
         self.body_raw = None
+
+        # Decoder Settings
+        self.ignore_network = None
         self.verbose = None
 
-    def decode_replay(self, path: str, verbose: int = 0) -> Replay:
+    def decode_replay(self, path: str, ignore_network_data: bool = False, verbose: int = 0) -> Replay:
         """
         Decode a Rocket League replay file
 
@@ -33,6 +36,8 @@ class ReplayDecoder:
         ----------
         path : str
             The replay file path
+        ignore_network_data : bool, optional
+            If True, skip over network data (default=False)
         verbose : int, optional
             Verbosity level (default=0)
 
@@ -46,6 +51,7 @@ class ReplayDecoder:
             # Not a replay file
             raise ValueError('Can only decode Rocket League .replay files')
 
+        self.ignore_network = ignore_network_data
         self.verbose = verbose
         self.path = path
         self.replay = Replay()
@@ -204,7 +210,7 @@ class ReplayDecoder:
             print(f'[ReplayDecoder] {message}')
 
 
-def decode_replay(path: str, verbose: int = 0) -> Replay:
+def decode_replay(path: str, ignore_network_data: bool = False, verbose: int = 0) -> Replay:
     """
     Decodes the Rocket League replay file at path
 
@@ -212,6 +218,8 @@ def decode_replay(path: str, verbose: int = 0) -> Replay:
     ----------
     path : str
         The path of the replay file to decode
+    ignore_network_data : bool, optional
+        If True, skip over network data (default=False)
     verbose : int, optional
             Verbosity level (default=0)
 
@@ -223,5 +231,6 @@ def decode_replay(path: str, verbose: int = 0) -> Replay:
     """
 
     decoder = ReplayDecoder()
-    replay = decoder.decode_replay(path, verbose=verbose)
+    replay = decoder.decode_replay(
+        path, ignore_network_data=ignore_network_data, verbose=verbose)
     return replay

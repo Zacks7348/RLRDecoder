@@ -44,6 +44,10 @@ class Replay:
         output['net_caches'] = tmp
         with open(path, 'w') as f:
             json.dump(output, f, **kwargs)
+    
+    @property
+    def player_stats(self):
+        return self.header_properties.player_stats
 
 def replay_from_json(path: str) -> Replay:
     """

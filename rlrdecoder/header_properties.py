@@ -17,6 +17,17 @@ class HeaderProperties:
     def __init__(self, properties: dict) -> None:
         self.data = properties
 
+    def get_player_stats(self, player_name: str) -> dict:
+        """
+        Get the stats of a specific player
+        """
+        stats = self.player_stats
+        if stats:
+            for s in stats:
+                if s['Name'] == player_name:
+                    return s
+        return None
+
     # Expose common properties for ease of use
     @property
     def team_size(self):
